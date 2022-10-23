@@ -1,0 +1,65 @@
+﻿
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+            <img src="img/speech.png" width="32" height="32">
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <NavLink class="navbar-item" ActiveClass="is-active" href="/" Match="NavLinkMatch.All">
+                Home
+                @*<ion-icon name="home-outline"></ion-icon> Home*@
+                @*<span class="oi oi-home" aria-hidden="true"></span> Home*@
+            </NavLink>
+
+            <NavLink class="navbar-item" ActiveClass="is-active" href="/jobtitles" Match="NavLinkMatch.All">
+                Job Titles
+            </NavLink>
+
+            <NavLink class="navbar-item" ActiveClass="is-active" href="/politicalspeech" Match="NavLinkMatch.All">
+                Political speech
+            </NavLink>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    More
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" onclick="showAbout()">
+                        About
+                    </a>
+                    <a class="navbar-item" href="http://github.com/spyros1973" target="_blank">
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-end">
+@*            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                        Log in
+                    </a>
+                </div>
+            </div>
+*@        </div>
+    </div>
+
+</nav>
+
+@code {
+}

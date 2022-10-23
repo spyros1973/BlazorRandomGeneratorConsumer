@@ -1,0 +1,63 @@
+﻿@page "/politicalspeech"
+<PageTitle>PoliticalSpeech</PageTitle>
+
+<section class="hero">
+    <div class="hero-body">
+
+        <div class="columns">
+            <div class="column is-narrow">
+                <img class="image" src="img/boss.png" width="64" />
+            </div>
+
+            <div class="column">
+                <article class="message" style="max-height: 60vh;overflow-y:auto">
+                    <div class="message-body">
+                        @if (speech.Length==0)
+                        {
+                            <p>Use the button below to generate a new meaningless political speech</p>
+                        }
+                        else {
+                        @speech
+                        }
+                    </div>
+                </article>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="columns">
+    <div class="column">
+        <button class="button @busy" @onclick="() => GetSpeech()">Get speech</button>
+    </div>
+    <div class="column is-hidden">
+        <div class="is-pulled-right field is-horizontal">
+            <label class="label" style="padding:.375rem">Language:&nbsp;</label>
+            <div class="select">
+                <select @bind="lang">
+                    <option value="en">English</option>
+                    <option value="gr">Greek</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private string busy = "";
+    private string lang = "en";
+    private string speech = "";
+
+    async void GetSpeech()
+    {
+        busy = "is-loading";
+        StateHasChanged();
+        speech = (await ApiCommunicator.GetPoliticalSpeech());
+        busy = "";
+        StateHasChanged();
+    }
+}
+
