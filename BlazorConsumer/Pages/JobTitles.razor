@@ -12,14 +12,14 @@
             <div class="column">
                 <article class="message" style="max-height: 60vh;overflow-y:auto">
                     <div class="message-body">
-                        @if (jobTitles.Count == 0)
+                        @if (ContentHolder.JobTitles.Count == 0)
                         {
                             <p>Use the button below to generate a new bogus job title</p>
                         }
                         else
                         {
                             <ul class="list" style="list-style:circle">
-                                @foreach (string job in jobTitles)
+                                @foreach (string job in ContentHolder.JobTitles)
                                 {
                                     <li class="list-item">@job</li>
                                 }
@@ -54,14 +54,13 @@
 
 @code {
     private string busy = "";
-    private string lang = "en";
-    private List<string> jobTitles = new();
+    private string lang = "en";    
 
     async void GetJobTitle()
     {
         busy = "is-loading";
         StateHasChanged();
-        jobTitles.Add(await ApiCommunicator.GetJobTitle(lang != "en" ? lang : ""));
+        ContentHolder.JobTitles.Add(await ApiCommunicator.GetJobTitle(lang != "en" ? lang : ""));
         busy = "";
         StateHasChanged();
     }
